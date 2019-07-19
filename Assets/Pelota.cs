@@ -6,6 +6,14 @@ public class Pelota : MonoBehaviour {
 
     public float hitForce = 3;              ///Lo fuerte que va a salir despedida la pelota
 
+
+    private void Start()
+    {
+        Rigidbody2D rb2D = GetComponent<Rigidbody2D>();
+
+        rb2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Pala p = collision.gameObject.GetComponent<Pala>();
@@ -21,7 +29,7 @@ public class Pelota : MonoBehaviour {
             // And finally we add force in the direction of dir and multiply it by force. 
             // This will push back the player
             Debug.Log(p.GetVelocity());
-            GetComponent<Rigidbody2D>().AddForce(dir * hitForce * p.GetVelocity());
+            GetComponent<Rigidbody2D>().AddForce(dir * p.GetVelocity(), ForceMode2D.Impulse);
         }
     }
 
