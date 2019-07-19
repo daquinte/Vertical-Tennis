@@ -25,6 +25,7 @@ public class Pala : MonoBehaviour
     {
         CalculateVelocity();
 
+        //[TEMPORAL]
         if (Input.GetKey(KeyCode.Q))
         {
             gameObject.transform.Rotate(new Vector3(0, 0, 1), rotation);
@@ -34,6 +35,7 @@ public class Pala : MonoBehaviour
         {
             gameObject.transform.Rotate(new Vector3(0, 0, 1), -rotation);
         }
+
         MoveWithMousePos();
         StayInCameraBounds();
     }
@@ -66,7 +68,6 @@ public class Pala : MonoBehaviour
     private void StayInCameraBounds()
     {
         Rect camera = GameManager.instance.GetLevelManager().GetCameraRect();
-
         transform.position = new Vector3(
         Mathf.Clamp(transform.position.x, camera.xMin, camera.xMax),
         Mathf.Clamp(transform.position.y, camera.yMin, camera.yMax),
