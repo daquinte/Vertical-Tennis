@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class Bloque : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public int vida = 3;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Pelota p = collision.gameObject.GetComponent<Pelota>();
+
+        if (p != null)
+        {
+            vida--;
+            if (vida <= 0)
+            {
+                //Temporal, debería avisar a LevelManager
+                GameManager.instance.GetLevelManager().SumaPuntos();
+                Destroy(gameObject);
+            }
+        }
+        else if (collision.gameObject.CompareTag("Pala"))
+        {
+            Debug.Log("IT WORKS");
+        }
+    }
+
 }

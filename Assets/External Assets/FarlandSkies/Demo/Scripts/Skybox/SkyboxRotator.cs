@@ -3,7 +3,7 @@
 public class SkyboxRotator : MonoBehaviour
 {
     public float RotationPerSecond = 1;
-    private bool _rotate;
+    public bool _rotate;
 
     protected void Update()
     {

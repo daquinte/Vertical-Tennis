@@ -5,17 +5,28 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
 
+    private int puntosNivel;
+    private int puntosOtorgar = 10;
 
     // Use this for initialization
     void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        puntosNivel = 0;
 	}
 
+    /// <summary>
+    /// Relativo a los puntos
+    /// </summary>
+
+    public void SumaPuntos()
+    {
+        puntosNivel += puntosOtorgar;
+    }
+
+    public int GetPuntosNivel()
+    {
+        return puntosNivel;
+    }
+	
     /// <summary>
     /// Construye un rectangulo que representa el viewport de la cámara actual
     /// y lo devuelve

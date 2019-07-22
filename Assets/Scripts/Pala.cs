@@ -18,6 +18,7 @@ public class Pala : MonoBehaviour
     void Start()
     {
         objectPosition = transform.position;
+
     }
 
     // Update is called once per frame
@@ -49,6 +50,12 @@ public class Pala : MonoBehaviour
         objectPosition = newObjectPosition;
     }
 
+    public void AddOpositeForce()
+    {
+        Debug.Log(-objectVelocityVector * GetVelocity());
+        GetComponent<Rigidbody>().AddForce(-objectVelocityVector * GetVelocity(), ForceMode.Force);
+    }
+
     public float GetVelocity()
     {
         float velMagnitude = objectVelocityVector.magnitude;
@@ -59,7 +66,7 @@ public class Pala : MonoBehaviour
     {
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        transform.position = Vector2.Lerp(transform.position, mousePosition, moveSpeed);
+        GetComponent<Rigidbody>().MovePosition(Vector2.Lerp(transform.position, mousePosition, moveSpeed / Time.deltaTime));
     }
 
     /// <summary>

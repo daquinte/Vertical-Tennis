@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        //Depende del juego al que se juegue???
+        levelManager = new LevelManager();
 	}
 
     // Update is called once per frame
@@ -37,7 +38,6 @@ public class GameManager : MonoBehaviour {
     ///
     public LevelManager GetLevelManager()
     {
-        if (levelManager == null) levelManager = new LevelManager();
         return levelManager;
     }
 }
