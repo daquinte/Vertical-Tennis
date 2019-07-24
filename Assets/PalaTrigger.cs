@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class PalaTrigger : MonoBehaviour {
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerStay(Collider col)
     {
         Bloque b = col.GetComponent<Bloque>();
         if (b != null)
         {
             
             Pala p = GetComponentInParent<Pala>();
-            GetComponentInParent<Rigidbody>().isKinematic = false;
-            p.AddOpositeForce();
+            
         }
     }
 

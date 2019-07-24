@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 33787779995373780}
   - component: {fileID: 23178547792051486}
   - component: {fileID: 65635784297173692}
+  - component: {fileID: 114556406906040908}
   m_Layer: 0
   m_Name: Muro
   m_TagString: Untagged
@@ -52,13 +53,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840175798756976}
-  m_LocalRotation: {x: -0.5082761, y: 0.49158466, z: -0.49158466, w: 0.5082761}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.5028308, y: 0.49715313, z: -0.49715313, w: 0.5028308}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1.425, y: 1, z: 1.3775431}
   m_Children: []
   m_Father: {fileID: 4532365044588930}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -178.087, y: -90, z: 89.99999}
+  m_LocalEulerAnglesHint: {x: -179.349, y: -90, z: 89.99999}
 --- !u!4 &4532365044588930
 Transform:
   m_ObjectHideFlags: 1
@@ -66,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1928196723432742}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.980011, y: 0, z: 0}
-  m_LocalScale: {x: 1.475, y: 11.898, z: 1}
+  m_LocalPosition: {x: -8.7, y: 6.228, z: 0}
+  m_LocalScale: {x: 1.475, y: 24.355206, z: 1}
   m_Children:
   - {fileID: 4456348351810918}
   m_Father: {fileID: 0}
@@ -127,6 +128,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114556406906040908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1928196723432742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b578732bb323974cb9dac707709442d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLeftWall: 1
 --- !u!198 &198567082340247962
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -691,7 +704,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 10000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -758,7 +771,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 7.447054, y: 1, z: 0.5011378}
+    m_Scale: {x: 14.0212345, y: 1.09, z: 0.5011378}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0

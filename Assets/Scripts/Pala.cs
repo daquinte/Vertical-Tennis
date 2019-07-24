@@ -41,19 +41,40 @@ public class Pala : MonoBehaviour
         StayInCameraBounds();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Bloque b = collision.gameObject.GetComponent<Bloque>();
+        if(b != null) {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            Vector3 dir = collision.contacts[0].point - transform.position; //Dirección de golpe
+            dir = -dir.normalized;
+            rb.AddForce(dir * 2, ForceMode.VelocityChange);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Bloque b = collision.gameObject.GetComponent<Bloque>();
+        if (b != null)
+        {
+            GetComponent<Rigidbody>().isKinematic = true;
+        }
+    }
+
     private void CalculateVelocity()
     {
         Vector3 newObjectPosition = transform.position;
         Vector3 media = (newObjectPosition - objectPosition);
         objectVelocityVector = media / Time.deltaTime;
-        
+
         objectPosition = newObjectPosition;
     }
 
     public void AddOpositeForce()
     {
         Debug.Log(-objectVelocityVector * GetVelocity());
-        GetComponent<Rigidbody>().AddForce(-objectVelocityVector * GetVelocity(), ForceMode.Force);
+        GetComponent<Rigidbody>().AddForce(-objectVelocityVector * GetVelocity()*2, ForceMode.Force);
     }
 
     public float GetVelocity()
@@ -64,9 +85,11 @@ public class Pala : MonoBehaviour
 
     private void MoveWithMousePos()
     {
-        mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        GetComponent<Rigidbody>().MovePosition(Vector2.Lerp(transform.position, mousePosition, moveSpeed / Time.deltaTime));
+       
+     mousePosition = Input.mousePosition;
+     mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+     GetComponent<Rigidbody>().MovePosition(Vector2.Lerp(transform.position, mousePosition, moveSpeed / Time.deltaTime));
+        
     }
 
     /// <summary>
