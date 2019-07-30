@@ -5,6 +5,12 @@ using UnityEngine;
 public class Bloque : MonoBehaviour {
 
     public int vida = 3;
+    public float downwardsMovement = 0.01f;
+
+    private void Update()
+    {
+        transform.Translate(new Vector3(0, -downwardsMovement, 0), Space.Self);   
+    }
 
     private void OnCollisionEnter(Collision collision)
     {

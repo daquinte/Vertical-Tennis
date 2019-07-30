@@ -27,9 +27,9 @@ public class GameField : MonoBehaviour
     /// </summary>
     private void PlaceWalls()
     {
-        //Forma de sacar las dimensiones visibles
+        //Forma de sacar las dimensiones visibles -> ¿Las podría sacar de GM? Si, pero no jaj
         float height = Camera.main.orthographicSize * 2.0f;
-        float width = height * Screen.width / Screen.height; // basically height * screen aspect ratio
+        float width =  height * Screen.width / Screen.height; // basically height * screen aspect ratio
 
         //Posicion en función de la pared
         if (isLeftWall)

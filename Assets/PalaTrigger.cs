@@ -9,9 +9,7 @@ public class PalaTrigger : MonoBehaviour {
         Bloque b = col.GetComponent<Bloque>();
         if (b != null)
         {
-            
-            Pala p = GetComponentInParent<Pala>();
-            
+            Pala p = GetComponentInParent<Pala>();          
         }
     }
 
