@@ -12,14 +12,16 @@ public class Bloque : MonoBehaviour {
     private Color firstHit = Color.yellow;
     private Color secondHit = Color.white;
 
-    private void Start()
+    void Start()
     {
         currentHealth = maxHealth;
     }
 
-    private void Update()
+    void Update()
     {
-        transform.Translate(new Vector3(0, -downwardsMovement, 0), Space.Self);   
+        if (!GameManager.instance.GetLevelManager().GetPaused()) {
+            transform.Translate(new Vector3(0, -downwardsMovement, 0), Space.Self);
+        }
     }
 
     /// <summary>

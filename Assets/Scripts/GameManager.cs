@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
-    private LevelManager levelManager;
+    public LevelManager levelManager;               //Prefab de levelManager
+    private LevelManager levelManagerInstance;      //Instancia actual de levelManager
+
+    //Static instance
     public static GameManager instance;
 
     //Awake is always called before any Start functions
@@ -13,33 +17,40 @@ public class GameManager : MonoBehaviour {
     {
         //Check if instance already exists
         if (instance == null)
+        {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         else if (instance != this)
             Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
     }
 
     // Use this for initialization
-    void Start () {
-        //Depende del juego al que se juegue???
-        levelManager = new LevelManager();
-	}
-
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        if (Input.GetKey(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        OnGameStart();
     }
+
+    //TEMPORALLL
+    void OnLevelWasLoaded(int level)
+    {
+        if (level == 0)
+            OnGameStart();
+    }
+
+    private void OnGameStart()
+    {
+        levelManagerInstance = Instantiate(levelManager);
+    }
+
+
     ///
     //GETTERS AND SETTERS
     ///
     public LevelManager GetLevelManager()
     {
-        return levelManager;
+        return levelManagerInstance;
     }
 
-    
+
 }

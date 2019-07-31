@@ -26,7 +26,7 @@ public class Pala : MonoBehaviour
     {
         CalculateVelocity();
 
-        //[TEMPORAL]
+        //[TEMPORAL?]
         if (Input.GetKey(KeyCode.Q))
         {
             gameObject.transform.Rotate(new Vector3(0, 0, 1), rotation);

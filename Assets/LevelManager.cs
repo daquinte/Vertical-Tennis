@@ -1,17 +1,44 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-
+/// <summary>
+/// Clase que gestiona el flujo de juego a lo largo de un nivel
+/// </summary>
 public class LevelManager : MonoBehaviour {
 
-    private int puntosNivel;
-    private int puntosOtorgar = 10;
+    private LevelCanvas levelCanvas;                                //Referencia al panel para el estado de pausa. (TODO: ¿Está bien aqui?)
+    private int puntosNivel;                                //Cantidad de puntos actuales.
+    private int puntosOtorgar = 10;                         //Cantidad de puntos a entregar.
+    private bool IsPaused;                                  //¿Está pausado?
+
+    public LevelManager GetLevelManager()
+    {
+        return this;
+    }
 
     // Use this for initialization
     void Start () {
         puntosNivel = 0;
-	}
+        IsPaused = false;
+        FindMainCanvas();
+
+    }
+
+    private void Update()
+    {
+        //[TEMPORAL]
+        if (Input.GetKey(KeyCode.R)) { 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+    }
 
     /// <summary>
     /// Relativo a los puntos
@@ -46,5 +73,47 @@ public class LevelManager : MonoBehaviour {
 
         return cameraRect;
 
+    }
+
+    //Metodos de gestión del canvas
+    ///Lo siento Pedro Pablo, te he fallado
+    public LevelCanvas GetMainCanvas()
+    {
+        if (levelCanvas == null) FindMainCanvas();
+        return levelCanvas;
+    }
+    private void FindMainCanvas()
+    {
+        GameObject aux = GameObject.Find("Canvas");
+        if (aux != null)
+        {
+            levelCanvas = aux.GetComponent<LevelCanvas>();
+        }
+        else Debug.Log("No encuentro el canvas");
+    }
+
+
+    /// <summary>
+    /// Métodos de la gestión de pausa
+    /// </summary>
+
+    public bool GetPaused() { return IsPaused; }
+
+    private void PauseGame()
+    {
+        IsPaused = true;
+        Time.timeScale = 0;
+        levelCanvas.SetPanelPausa(true);
+    }
+
+    public void ContinueGame()
+    {
+        IsPaused = false;
+        Time.timeScale = 1;
+    }
+    public void QuitGame()
+    {
+        //GUARDA PUNTOS BLABLABLA
+        //Te lleva al menú -> avisa a GM de que tiene que pasarse al menú, guarda informacion y espera a ser destruido por GM
     }
 }
