@@ -20,7 +20,6 @@ public class MapCreator : MonoBehaviour {
     void Start () {
         height = Camera.main.orthographicSize * 2.0f;
         width  = height * Screen.width / Screen.height; // basically height * screen aspect ratio
-        Debug.Log("HEIGH: " + height + "WIDTH: " + width);
         InvokeRepeating("CreateRow", 0, difficulty);
 	}
 	

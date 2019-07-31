@@ -4,31 +4,57 @@ using UnityEngine;
 
 public class Bloque : MonoBehaviour {
 
-    public int vida = 3;
+    public int maxHealth = 3;
     public float downwardsMovement = 0.01f;
+    public Material blockMaterial;
+
+    private int currentHealth;
+    private Color firstHit = Color.yellow;
+    private Color secondHit = Color.white;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     private void Update()
     {
         transform.Translate(new Vector3(0, -downwardsMovement, 0), Space.Self);   
     }
 
+    /// <summary>
+    /// Revisa si el objeto colisionado es una pelota. En caso afirmativo, resta vida y calcula el nuevo color que debe tomar el shader.
+    /// Si la vida fuera 0, avisa a Level Manager y se destruye.
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         Pelota p = collision.gameObject.GetComponent<Pelota>();
 
         if (p != null)
         {
-            vida--;
-            if (vida <= 0)
+            currentHealth--;
+            
+            if (currentHealth <= 0)
             {
-                //Temporal, debería avisar a LevelManager
                 GameManager.instance.GetLevelManager().SumaPuntos();
                 Destroy(gameObject);
             }
-        }
-        else if (collision.gameObject.CompareTag("Pala"))
-        {
-            Debug.Log("IT WORKS");
+            else
+            {
+                float healthPercentage = (currentHealth * 100) / maxHealth;
+                //Si % de vida es mayor a 50, está en el rango "primer golpe".
+                //En caso contrario estará en el segundo rango.
+                if(healthPercentage > 50)
+                {
+                    GetComponent<Renderer>().material.SetColor("_Color", firstHit);
+                }
+                else
+                {
+                    GetComponent<Renderer>().material.SetColor("_Color", secondHit);
+                }
+
+            }
         }
     }
 
