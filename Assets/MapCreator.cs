@@ -12,7 +12,7 @@ public class MapCreator : MonoBehaviour {
     public GameObject prefabBloque;
     public int blocksPerRow = 5;
 
-    private int difficulty = 7;
+    private int difficulty = 8;
     private float height;
     private float width;
 
@@ -20,7 +20,7 @@ public class MapCreator : MonoBehaviour {
     void Start () {
         height = Camera.main.orthographicSize * 2.0f;
         width  = height * Screen.width / Screen.height; // basically height * screen aspect ratio
-        InvokeRepeating("CreateRow", 1, difficulty);
+        InvokeRepeating("CreateRow", 3, difficulty);
 	}
 	
     private void CreateRow()

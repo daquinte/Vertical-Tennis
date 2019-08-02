@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager: MonoBehaviour
 {
 
     public LevelManager levelManager;               //Prefab de levelManager
@@ -25,24 +25,28 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    // Use this for initialization
-    void Start()
+    public void StartGame()
     {
         OnGameStart();
     }
 
-    //TEMPORALLL
-    void OnLevelWasLoaded(int level)
+    public void QuitGame()
     {
-        if (level == 0)
-            OnGameStart();
+        Application.Quit();
     }
+
 
     private void OnGameStart()
     {
-        levelManagerInstance = Instantiate(levelManager);
+        SceneManager.LoadScene(1);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log(scene.name);
+        levelManagerInstance = Instantiate(levelManager);
+    }
 
     ///
     //GETTERS AND SETTERS

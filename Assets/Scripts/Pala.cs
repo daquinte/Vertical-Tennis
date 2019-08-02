@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Pala : MonoBehaviour
 {
+    /// <summary>
+    /// Private variables
+    /// </summary>
     private Vector3 mousePosition;
     private Vector3 objectPosition;
     private Vector3 objectVelocityVector;
@@ -18,9 +21,9 @@ public class Pala : MonoBehaviour
     void Start()
     {
         objectPosition = transform.position;
-
+        float width = (Camera.main.orthographicSize * 2.0f) * (Screen.width / Screen.height); // basically height * screen aspect ratio
+        transform.localScale = new Vector3 (width / 3, 1);
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {

@@ -44,7 +44,7 @@ public class GameField : MonoBehaviour
 
         //Escalamos el muro y el ParticleSystem convenientemente
         transform.localScale = new Vector3(1.5f, height + 200, 0);
-        Vector3 newCloudSystemScale = new Vector3(height, 1, 0);
+        Vector3 newCloudSystemScale = new Vector3(height+10, 1, 0);
         ParticleSystem.ShapeModule particleShape = cloudSystem.shape;
         particleShape.shapeType = ParticleSystemShapeType.Box;
         particleShape.scale = newCloudSystemScale;

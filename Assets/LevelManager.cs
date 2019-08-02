@@ -30,14 +30,21 @@ public class LevelManager : MonoBehaviour {
     private void Update()
     {
         //[TEMPORAL]
-        if (Input.GetKey(KeyCode.R)) { 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (Input.GetKey(KeyCode.R)) {
+            ReloadScene();
         }
 
         if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
         {
             PauseGame();
         }
+    }
+
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ContinueGame();
     }
 
     /// <summary>
@@ -92,6 +99,11 @@ public class LevelManager : MonoBehaviour {
         else Debug.Log("No encuentro el canvas");
     }
 
+    public void OnPlayerDeath()
+    {
+        levelCanvas.SetPanelMuerte(true);
+        Time.timeScale = 0;
+    }
 
     /// <summary>
     /// Métodos de la gestión de pausa
@@ -111,9 +123,17 @@ public class LevelManager : MonoBehaviour {
         IsPaused = false;
         Time.timeScale = 1;
     }
+
+    public void GoToMenu()
+    {
+        Destroy(this);
+        SceneManager.LoadScene(0);
+    }
+
     public void QuitGame()
     {
         //GUARDA PUNTOS BLABLABLA
         //Te lleva al menú -> avisa a GM de que tiene que pasarse al menú, guarda informacion y espera a ser destruido por GM
+        GameManager.instance.QuitGame();
     }
 }

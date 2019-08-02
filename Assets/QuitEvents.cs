@@ -7,22 +7,28 @@ using UnityEngine.EventSystems;
 
 public class QuitEvents : MonoBehaviour {
 
-    public int maxQuitTime = 50;                      //Tiempo que el usuario debe pulsar el botón para cerrar el juego
-
-    private int currentQuitTime;                           //Tiempo que lleva el usuario pulsando el botón
     private bool isQuitting;                        //¿Está el jugador queriendo irse de la partida?
     private Button quitButton;                      //Referencia al botón (Aun no se bien para qué)
+    
 
 	// Use this for initialization
 	void Start () {
         quitButton = GetComponent<Button>();
         isQuitting = false;
-        currentQuitTime = 0;
 	}
 
     private void Update()
     {
-       
+        //TODO:
+        //Hacer que el botón se enrojezca en función del tiempo (En plan ojo cuidao)
+        if (isQuitting)
+        {
+            Image bImage = quitButton.GetComponent<Image>();
+            float G = bImage.color.g - 0.01f;
+            float B = bImage.color.b - 0.01f;
+            bImage.color = new Color(255, G, B, 255);
+
+        }
     }
 
     //Cuenta si has pulsado el botón durante el tiempo establecido
@@ -50,7 +56,7 @@ public class QuitEvents : MonoBehaviour {
     {
         Debug.Log("OUT");
         isQuitting = false;
-        currentQuitTime = 0;
+        quitButton.GetComponent<Image>().color = Color.white;
     }
 
 }
