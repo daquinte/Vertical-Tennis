@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 /// <summary>
 /// Clase que gestiona el flujo de juego a lo largo de un nivel
 /// </summary>
-public class LevelManager : MonoBehaviour {
+public class LevelManager : MonoBehaviour
+{
 
     private LevelCanvas levelCanvas;                                //Referencia al panel para el estado de pausa. (TODO: ¿Está bien aqui?)
     private int puntosNivel;                                //Cantidad de puntos actuales.
@@ -20,18 +21,20 @@ public class LevelManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         puntosNivel = 0;
-        Time.timeScale = 1;
         IsPaused = false;
         FindMainCanvas();
-
+        Time.timeScale = 0;
+        levelCanvas.StartCountDown(3, ResumeGame);
     }
 
     private void Update()
     {
         //[TEMPORAL]
-        if (Input.GetKey(KeyCode.R)) {
+        if (Input.GetKey(KeyCode.R))
+        {
             ReloadScene();
         }
 
@@ -61,7 +64,7 @@ public class LevelManager : MonoBehaviour {
     {
         return puntosNivel;
     }
-	
+
     /// <summary>
     /// Construye un rectangulo que representa el viewport de la cámara actual
     /// y lo devuelve
@@ -122,8 +125,14 @@ public class LevelManager : MonoBehaviour {
 
     public void ContinueGame()
     {
+        levelCanvas.StartCountDown(3, ResumeGame);
+    }
+
+    private void ResumeGame(LevelCanvas levelCanvas)
+    {
         IsPaused = false;
         Time.timeScale = 1;
+
     }
 
     public void GoToMenu()

@@ -5,8 +5,8 @@ using UnityEngine;
 public class ScaleEffect : MonoBehaviour
 {
 
-    public float maxValue;
-    public float minValue;
+    public float maxValue = 1;
+    public float minValue = 0.5f;
 
     private bool upwards = true;
     private float medidor;
@@ -19,18 +19,20 @@ public class ScaleEffect : MonoBehaviour
     void Update()
     {
         medidor = transform.localScale.x;
+        Debug.Log(maxValue + " " + minValue);
         if (upwards)
         {
-            medidor += 0.1f * Time.deltaTime;
+            medidor += 0.2f * Time.fixedUnscaledDeltaTime;
             if (medidor > maxValue) upwards = false;
         }
         else
         {
-            medidor -= 0.1f * Time.deltaTime;
+            medidor -= 0.2f * Time.fixedUnscaledDeltaTime;
             if (medidor < minValue) upwards = true;
 
         }
-        transform.localScale = new Vector3(medidor, medidor);
+        Debug.Log(medidor);        Debug.Log(upwards);
+        gameObject.transform.localScale = new Vector3(medidor, medidor);
     }
 
 }

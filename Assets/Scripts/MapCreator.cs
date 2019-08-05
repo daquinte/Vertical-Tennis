@@ -10,8 +10,8 @@ using UnityEngine;
 public class MapCreator : MonoBehaviour {
 
     public GameObject prefabBloque;
-    public int blocksPerRow = 5;
 
+    private int blocksPerRow = 5;
     private int difficulty = 8;
     private float height;
     private float width;

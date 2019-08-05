@@ -9,6 +9,7 @@ public class LevelCanvas : MonoBehaviour {
 
     
     public TextMeshProUGUI textoPuntos;
+    public TextMeshProUGUI textoCountDown;
     public GameObject panelPausa;
     public GameObject panelMuerte;
 
@@ -32,11 +33,14 @@ public class LevelCanvas : MonoBehaviour {
         panelMuerte.SetActive(state);
     }
 
+    /// <summary>
+    /// BUTTON CALLBACKS
+    /// </summary>
+
     public void OnContinue()
     {
         GameManager.instance.GetLevelManager().ContinueGame();
         SetPanelPausa(false);
-        ///CODIGO DEL COUNTDOWN
     }
 
     public void OnReintentar()
@@ -54,5 +58,25 @@ public class LevelCanvas : MonoBehaviour {
     {
         GameManager.instance.GetLevelManager().QuitGame();
         Debug.Log("ON QUIT");
+    }
+
+    public void StartCountDown(int count, System.Action<LevelCanvas> callback)
+    {
+        textoCountDown.gameObject.SetActive(true);
+        textoCountDown.text = count.ToString();
+        StartCoroutine(CountDown(count, callback));
+    }
+
+    IEnumerator CountDown(int count, System.Action<LevelCanvas> callback)
+    {
+        
+        while (count > 0) {
+            yield return new WaitForSecondsRealtime(0.8f);
+            count--;
+            textoCountDown.text = count.ToString();
+            yield return null;
+        }
+        textoCountDown.gameObject.SetActive(false);
+        if (callback != null) callback(this);
     }
 }

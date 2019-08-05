@@ -25,6 +25,15 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    //HACK TEMPORAL :)
+    void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "EscenaPartida")
+        {
+            levelManagerInstance = Instantiate(levelManager);
+        }
+    }
+
     public void StartGame()
     {
         OnGameStart();
