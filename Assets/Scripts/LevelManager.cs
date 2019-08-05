@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         puntosNivel = 0;
+        Time.timeScale = 1;
         IsPaused = false;
         FindMainCanvas();
 
@@ -102,6 +103,7 @@ public class LevelManager : MonoBehaviour {
     public void OnPlayerDeath()
     {
         levelCanvas.SetPanelMuerte(true);
+        IsPaused = true;
         Time.timeScale = 0;
     }
 
@@ -126,7 +128,7 @@ public class LevelManager : MonoBehaviour {
 
     public void GoToMenu()
     {
-        Destroy(this);
+        Destroy(this.gameObject);
         SceneManager.LoadScene(0);
     }
 

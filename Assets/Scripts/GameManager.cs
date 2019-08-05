@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager: MonoBehaviour
+public class GameManager : MonoBehaviour
 {
 
     public LevelManager levelManager;               //Prefab de levelManager
@@ -28,6 +28,7 @@ public class GameManager: MonoBehaviour
     public void StartGame()
     {
         OnGameStart();
+        levelManagerInstance = null;
     }
 
     public void QuitGame()
@@ -44,8 +45,10 @@ public class GameManager: MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Debug.Log(scene.name);
-        levelManagerInstance = Instantiate(levelManager);
+        if (scene.name == "EscenaPartida" && levelManagerInstance == null)
+        {
+            levelManagerInstance = Instantiate(levelManager);
+        }
     }
 
     ///

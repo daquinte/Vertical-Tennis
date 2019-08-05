@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 377381583}
   - component: {fileID: 377381585}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: SubTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -216,14 +216,14 @@ RectTransform:
   m_GameObject: {fileID: 377381581}
   m_LocalRotation: {x: -0, y: -0, z: 0.102409765, w: 0.99474233}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.3287547, y: 0.30124533, z: 1}
   m_Children: []
-  m_Father: {fileID: 2019730705}
-  m_RootOrder: 0
+  m_Father: {fileID: 1586151288}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 11.7560005}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 81, y: -65}
+  m_AnchoredPosition: {x: 93.100006, y: 45}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377381583
@@ -725,7 +725,7 @@ RectTransform:
   - {fileID: 1118964747}
   - {fileID: 603440861}
   m_Father: {fileID: 1586151288}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -771,7 +771,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 836934367}
+      - m_Target: {fileID: 1586151290}
         m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
@@ -831,6 +831,7 @@ GameObject:
   - component: {fileID: 1586151285}
   - component: {fileID: 1586151284}
   - component: {fileID: 1586151289}
+  - component: {fileID: 1586151290}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -920,6 +921,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2019730705}
+  - {fileID: 377381582}
   - {fileID: 1575526840}
   - {fileID: 2006974750}
   m_Father: {fileID: 0}
@@ -943,6 +945,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationPerSecond: 3
   _rotate: 1
+--- !u!114 &1586151290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1586151283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a74ad4f1fbf71438272b2bd33eb3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1673719179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1204,7 @@ RectTransform:
   - {fileID: 1841839409}
   - {fileID: 1171902490}
   m_Father: {fileID: 1586151288}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1237,7 +1250,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 836934367}
+      - m_Target: {fileID: 1586151290}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -1310,8 +1323,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 377381582}
+  m_Children: []
   m_Father: {fileID: 1586151288}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
