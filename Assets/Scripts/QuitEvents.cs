@@ -46,7 +46,7 @@ public class QuitEvents : MonoBehaviour {
         if (isQuitting)
         {
             LevelCanvas lc = GameManager.instance.GetLevelManager().GetMainCanvas();
-            lc.OnQuit();
+            lc.OnMainMenu();
         }
         yield return null; //Quit corroutine
     }

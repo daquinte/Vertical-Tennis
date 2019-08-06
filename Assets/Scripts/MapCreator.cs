@@ -43,7 +43,7 @@ public class MapCreator : MonoBehaviour
     private void CreateRow()
     {
         float tamBloque = width / blocksPerRow; //Lo que debe ocupar cada bloque
-        float firstXPos = -width / 2 + 1.5f;
+        float firstXPos = -width / 2 + 0.8f;
         for (int i = 0; i < blocksPerRow; i++)
         {
             GameObject aux = Instantiate(prefabBloque);
