@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  downwardsMovement: 0.004
+  downwardsMovement: 0.003
   blockMaterial: {fileID: 2100000, guid: 4eac5d082b670db45ae8d7a1f5e18da2, type: 2}

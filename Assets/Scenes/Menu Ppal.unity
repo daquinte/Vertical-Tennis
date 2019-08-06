@@ -359,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxValue: 0.5
   minValue: 0.3
+  scaleFactor: 0.08
 --- !u!1 &603440860
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class Pala : MonoBehaviour
         MoveWithMousePos();
         StayInCameraBounds();
     }
-
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         Bloque b = collision.gameObject.GetComponent<Bloque>();
@@ -63,7 +63,7 @@ public class Pala : MonoBehaviour
         {
             GetComponent<Rigidbody>().isKinematic = true;
         }
-    }
+    }*/
 
     private void CalculateVelocity()
     {
@@ -83,7 +83,10 @@ public class Pala : MonoBehaviour
     public float GetVelocity()
     {
         float velMagnitude = objectVelocityVector.magnitude;
-        return velMagnitude > 0 ? velMagnitude : 1;
+        //Controlamos la fuerza para que esté en valores [30-1]
+        if (velMagnitude > 15f) velMagnitude = 15f;
+        else if (velMagnitude < 0) velMagnitude = 1f;
+        return velMagnitude;
     }
 
     private void MoveWithMousePos()
