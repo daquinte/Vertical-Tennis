@@ -7,9 +7,9 @@ public class Pala : MonoBehaviour
     /// <summary>
     /// Private variables
     /// </summary>
-    private Vector3 mousePosition;
-    private Vector3 objectPosition;
-    private Vector3 objectVelocityVector;
+    private Vector2 mousePosition;
+    private Vector2 objectPosition;
+    private Vector2 objectVelocityVector;
 
     /// <summary>
     /// Public variables
@@ -21,8 +21,8 @@ public class Pala : MonoBehaviour
     void Start()
     {
         objectPosition = transform.position;
-        float width = (Camera.main.orthographicSize * 2.0f) * (Screen.width / Screen.height); // basically height * screen aspect ratio
-        transform.localScale = new Vector3 (width / 3, 1);
+        float width = GameManager.instance.GetWidth();
+        //transform.localScale = new Vector2 (width / 8, width/7);
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -67,18 +67,13 @@ public class Pala : MonoBehaviour
 
     private void CalculateVelocity()
     {
-        Vector3 newObjectPosition = transform.position;
-        Vector3 media = (newObjectPosition - objectPosition);
+        Vector2 newObjectPosition = transform.position;
+        Vector2 media = (newObjectPosition - objectPosition);
         objectVelocityVector = media / Time.deltaTime;
 
         objectPosition = newObjectPosition;
     }
 
-    public void AddOpositeForce()
-    {
-        Debug.Log(-objectVelocityVector * GetVelocity());
-        GetComponent<Rigidbody>().AddForce(-objectVelocityVector * GetVelocity()*2, ForceMode.Force);
-    }
 
     public float GetVelocity()
     {
@@ -94,7 +89,7 @@ public class Pala : MonoBehaviour
        
      mousePosition = Input.mousePosition;
      mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-     GetComponent<Rigidbody>().MovePosition(Vector2.Lerp(transform.position, mousePosition, moveSpeed / Time.deltaTime));
+     GetComponent<Rigidbody2D>().MovePosition(Vector2.Lerp(transform.position, mousePosition, moveSpeed / Time.deltaTime));
         
     }
 
@@ -104,9 +99,8 @@ public class Pala : MonoBehaviour
     private void StayInCameraBounds()
     {
         Rect camera = GameManager.instance.GetLevelManager().GetCameraRect();
-        transform.position = new Vector3(
+        transform.position = new Vector2(
         Mathf.Clamp(transform.position.x, camera.xMin, camera.xMax),
-        Mathf.Clamp(transform.position.y, camera.yMin, camera.yMax),
-        transform.position.z);
+        Mathf.Clamp(transform.position.y, camera.yMin, camera.yMax));
     }
 }

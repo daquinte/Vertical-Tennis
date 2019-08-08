@@ -6,14 +6,14 @@ public class Deathzone : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        float heigh = Camera.main.orthographicSize * 2.0f;
-        float width = heigh * (Screen.width / Screen.height);
+        float heigh = GameManager.instance.GetHeight();
+        float width = GameManager.instance.GetWidth();
 
         transform.localPosition = new Vector3(0, -heigh / 2 - 2);
-        GetComponent<BoxCollider>().size = new Vector3(width * 2, 1);
+        GetComponent<BoxCollider2D>().size = new Vector3(width * 2, 1);
     }
 
-    private void OnTriggerEnter(Collider collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Pelota p = collision.GetComponent<Pelota>();
         //Si es una pelota, activo la flecha

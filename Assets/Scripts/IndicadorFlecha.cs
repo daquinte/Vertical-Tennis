@@ -9,7 +9,7 @@ public class IndicadorFlecha : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        float heigh = Camera.main.orthographicSize * 2.0f;
+        float heigh = GameManager.instance.GetHeight();
         transform.localPosition = new Vector3(0, heigh / 2 - 1.5f, -1); //-1 para que esté delante de los bloques
     }
 

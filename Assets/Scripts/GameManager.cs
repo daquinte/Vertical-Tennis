@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
 {
 
     public LevelManager levelManager;               //Prefab de levelManager
+
     private LevelManager levelManagerInstance;      //Instancia actual de levelManager
+
+    private float height;
+    private float width;
 
     //Static instance
     public static GameManager instance;
@@ -20,6 +24,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            RegisterScreenDimensions();
         }
         else if (instance != this)
             Destroy(gameObject);
@@ -67,6 +72,16 @@ public class GameManager : MonoBehaviour
     {
         return levelManagerInstance;
     }
+
+    private void RegisterScreenDimensions() {
+        height = Camera.main.orthographicSize * 2.0f;
+        width = height * Screen.width / Screen.height; // basically height * screen aspect ratio
+    }
+
+    //Ancho y alto de la pantalla
+    public float GetHeight() { return height; }
+    public float GetWidth() { return width; }
+
 
 
 }

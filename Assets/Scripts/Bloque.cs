@@ -29,7 +29,7 @@ public class Bloque : MonoBehaviour {
     /// Si la vida fuera 0, avisa a Level Manager y se destruye.
     /// </summary>
     /// <param name="collision"></param>
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Pelota p = collision.gameObject.GetComponent<Pelota>();
 

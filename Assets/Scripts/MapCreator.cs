@@ -23,8 +23,8 @@ public class MapCreator : MonoBehaviour
     void Start()
     {
         levelManager = GetComponentInParent<LevelManager>();
-        height = Camera.main.orthographicSize * 2.0f;
-        width = height * Screen.width / Screen.height; // basically height * screen aspect ratio
+        height = GameManager.instance.GetHeight();
+        width = GameManager.instance.GetWidth(); 
         //InvokeRepeating("CreateRow", 3, difficulty);
         StartCoroutine(GameFlow());
     }
