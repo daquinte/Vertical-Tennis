@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class MenuCanvas : MonoBehaviour {
 
-    public GameObject panelControles;
+    public GameObject botones;
+    private float upscaleFactor;
 
-	// Use this for initialization
-	void Start () {
-        panelControles.SetActive(false);
-	}
+    private void Start()
+    {
+        botones.transform.localScale = Vector3.zero;
+        Debug.Log("HOLA HOLA");
+    }
+
+    private void Update()
+    {
+        if (botones.transform.localScale.x < 1)
+        {
+            float scale = botones.transform.localScale.x + 0.4f * Time.unscaledDeltaTime;
+            botones.transform.localScale = new Vector3(scale, scale);
+            Debug.Log(botones.transform.localScale.x);
+
+        }
+    }
+
 	
 	public void StartGame()
     {
@@ -21,9 +35,5 @@ public class MenuCanvas : MonoBehaviour {
         GameManager.instance.QuitGame();
     }
 
-    public void TooglePanelControles()
-    {
-        if (panelControles.activeSelf) { panelControles.SetActive(false); }
-        else panelControles.SetActive(true);
-    }
+
 }

@@ -12,10 +12,12 @@ public class LevelCanvas : MonoBehaviour {
     public TextMeshProUGUI textoCountDown;
     public GameObject panelPausa;
     public GameObject panelMuerte;
+    public GameObject botonPausa;
 
 	// Use this for initialization
 	void Start () {
         panelPausa.SetActive(false);         //En caso de que estuviera encendido.
+        botonPausa.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -33,9 +35,18 @@ public class LevelCanvas : MonoBehaviour {
         panelMuerte.SetActive(state);
     }
 
+    public void SetPauseButton(bool state)
+    {
+        botonPausa.SetActive(state);
+    }
+
     /// <summary>
     /// BUTTON CALLBACKS
     /// </summary>
+    public void OnPause()
+    {
+        GameManager.instance.GetLevelManager().PauseGame();
+    }
 
     public void OnContinue()
     {

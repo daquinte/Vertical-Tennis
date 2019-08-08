@@ -20,7 +20,6 @@ public class ScaleEffect : MonoBehaviour
     void Update()
     {
         medidor = transform.localScale.x;
-        Debug.Log(maxValue + " " + minValue);
         if (upwards)
         {
             medidor += scaleFactor * Time.fixedUnscaledDeltaTime;

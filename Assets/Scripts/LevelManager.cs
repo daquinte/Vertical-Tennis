@@ -30,21 +30,6 @@ public class LevelManager : MonoBehaviour
         levelCanvas.StartCountDown(3, ResumeGame);
     }
 
-    private void Update()
-    {
-        //[TEMPORAL]
-        if (Input.GetKey(KeyCode.R))
-        {
-            ReloadScene();
-        }
-
-        if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.Escape))
-        {
-            PauseGame();
-        }
-    }
-
-
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -54,7 +39,6 @@ public class LevelManager : MonoBehaviour
     /// <summary>
     /// Relativo a los puntos
     /// </summary>
-
     public void SumaPuntos()
     {
         puntosNivel += puntosOtorgar;
@@ -116,11 +100,13 @@ public class LevelManager : MonoBehaviour
 
     public bool GetPaused() { return IsPaused; }
 
-    private void PauseGame()
+    public void PauseGame()
     {
         IsPaused = true;
         Time.timeScale = 0;
         levelCanvas.SetPanelPausa(true);
+        levelCanvas.SetPauseButton(false);
+
     }
 
     public void ContinueGame()
@@ -132,7 +118,7 @@ public class LevelManager : MonoBehaviour
     {
         IsPaused = false;
         Time.timeScale = 1;
-
+        levelCanvas.SetPauseButton(true);
     }
 
     public void GoToMenu()

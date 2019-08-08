@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bloque : MonoBehaviour {
 
     public int maxHealth = 3;
-    public float downwardsMovement = 0.01f;
+    public float downwardsMovement = 0.08f;
     public Material blockMaterial;
 
     private int currentHealth;
