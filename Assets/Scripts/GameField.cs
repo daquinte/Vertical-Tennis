@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,18 +8,35 @@ public class GameField : MonoBehaviour
 {
 
     public bool isLeftWall; //¿Es la pared de la izquierda?
+    public bool isTopWall;  //¿Es la pared de la superior?
     private ParticleSystem cloudSystem;
+
+    private float height;
+    private float width;
 
     // Use this for initialization
     void Start()
     {
+        height = GameManager.instance.GetHeight();
+        width = GameManager.instance.GetWidth();
         cloudSystem = GetComponentInChildren<ParticleSystem>();
         if (cloudSystem != null)
         {
             PlaceWalls();
         }
-        else Debug.Log("You don´t seem to have a cloudSystem, friend");
+        else if (isTopWall)
+        {
+            PlaceTopWall();
+        }
+    }
 
+    /// <summary>
+    /// Coloca el muro superior, con una escala relativa al tamaño de la pantalla
+    /// </summary>
+    private void PlaceTopWall()
+    {
+        transform.localPosition = new Vector3(width/7, height);
+        transform.localScale = new Vector3(0.5f, width+5, 0);
     }
 
     /// <summary>
@@ -27,10 +45,6 @@ public class GameField : MonoBehaviour
     /// </summary>
     private void PlaceWalls()
     {
-       
-        float height = GameManager.instance.GetHeight();
-        float width = GameManager.instance.GetWidth(); 
-
         //Posicion en función de la pared
         if (isLeftWall)
         {
@@ -43,13 +57,11 @@ public class GameField : MonoBehaviour
         }
 
         //Escalamos el muro y el ParticleSystem convenientemente
-        transform.localScale = new Vector3(1.5f, height + 100, 0);
+        transform.localScale = new Vector3(0.5f, height + 100, 0);
         Vector3 newCloudSystemScale = new Vector3(height+10, 1, 0);
         ParticleSystem.ShapeModule particleShape = cloudSystem.shape;
         particleShape.shapeType = ParticleSystemShapeType.Box;
         particleShape.scale = newCloudSystemScale;
-
-
     }
 
 

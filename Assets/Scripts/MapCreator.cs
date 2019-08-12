@@ -35,16 +35,16 @@ public class MapCreator : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
 
         while (!levelManager.GetPaused()) { 
-            CreateRow();
+            CreateRow(1);
             yield return new WaitForSeconds(difficulty);
         }
     }
 
-    private void CreateRow()
+    private void CreateRow(int index)
     {
         float tamBloque = width / blocksPerRow; //Lo que debe ocupar cada bloque
         float firstXPos = -width / 2 + 0.8f;
-        for (int i = 0; i < blocksPerRow; i++)
+        for (int i = 0; i < blocksPerRow; i+=index)
         {
             GameObject aux = Instantiate(prefabBloque);
             aux.transform.localScale = new Vector3(tamBloque, 1);

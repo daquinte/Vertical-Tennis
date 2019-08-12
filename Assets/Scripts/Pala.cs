@@ -22,7 +22,7 @@ public class Pala : MonoBehaviour
     {
         objectPosition = transform.position;
         float width = GameManager.instance.GetWidth();
-        //transform.localScale = new Vector2 (width / 8, width/7);
+        transform.localScale = new Vector2 (width / 12, 0.2f);
     }
     // Update is called once per frame
     void FixedUpdate()
