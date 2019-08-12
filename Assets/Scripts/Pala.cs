@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ 
+     TODO: HACER QUE LA PALA SE DESPLACE, NO SE TELETRANSPORTE
+     
+     BUG: AL PULSAR EL BOTON DE PAUSA A VECES SE MUEVE LA BOLA, APARTE DE LA PALA QUE NO DEBErÍA MOVERSE :3*/
+
 public class Pala : MonoBehaviour
 {
     /// <summary>
@@ -78,8 +84,8 @@ public class Pala : MonoBehaviour
     public float GetVelocity()
     {
         float velMagnitude = objectVelocityVector.magnitude;
-        //Controlamos la fuerza para que esté en valores [30-1]
-        if (velMagnitude > 15f) velMagnitude = 15f;
+        //Controlamos la fuerza para que esté en un rango de valores
+        if (velMagnitude > 10f) velMagnitude = 10f;
         else if (velMagnitude < 0) velMagnitude = 1f;
         return velMagnitude;
     }

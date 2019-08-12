@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabBloque: {fileID: 1123602260680680, guid: 8d2eca053fdd7974684306531f895924,
     type: 2}
-  blocksPerRow: 6
+  blocksPerRow: 8
 --- !u!114 &114535571408980054
 MonoBehaviour:
   m_ObjectHideFlags: 1

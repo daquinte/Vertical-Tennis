@@ -884,7 +884,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 976cc2e03e4d9394592903c03525c6b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0503192e04d595e46981697cd89518d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -902,8 +902,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 283838790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.11, y: 2.53, z: 1.2403935}
-  m_LocalScale: {x: 0.31401432, y: 0.3209259, z: 1}
+  m_LocalPosition: {x: -0.11, y: 6.96, z: 1.2403935}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -919,10 +919,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 1.8
-  m_AngularDrag: 0.05
-  m_GravityScale: 2.4
+  m_Mass: 20
+  m_LinearDrag: 2
+  m_AngularDrag: 1
+  m_GravityScale: 2.5
   m_Material: {fileID: 6200000, guid: 3cb00ec2d668a7341bb54b68134ff6c3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -940,9 +940,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.04322648, y: 0}
   serializedVersion: 2
-  m_Radius: 2.565
+  m_Radius: 1.3978668
 --- !u!114 &283838795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1348,6 +1348,10 @@ Prefab:
     - target: {fileID: 1928196723432742, guid: 111140adfddde6d4bbffbdf877b29a53, type: 2}
       propertyPath: m_Name
       value: MuroIzq
+      objectReference: {fileID: 0}
+    - target: {fileID: 4456348351810918, guid: 111140adfddde6d4bbffbdf877b29a53, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.73
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 65635784297173692, guid: 111140adfddde6d4bbffbdf877b29a53, type: 2}
@@ -2765,7 +2769,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4456348351810918, guid: 111140adfddde6d4bbffbdf877b29a53, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.48
+      value: -0.01
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114556406906040908, guid: 111140adfddde6d4bbffbdf877b29a53, type: 2}

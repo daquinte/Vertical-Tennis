@@ -16,6 +16,7 @@ public class MapCreator : MonoBehaviour
 
     private LevelManager levelManager;
     private int difficulty = 15;
+    private int index = 2;
     private float height;
     private float width;
 
@@ -25,18 +26,27 @@ public class MapCreator : MonoBehaviour
         levelManager = GetComponentInParent<LevelManager>();
         height = GameManager.instance.GetHeight();
         width = GameManager.instance.GetWidth(); 
-        //InvokeRepeating("CreateRow", 3, difficulty);
         StartCoroutine(GameFlow());
     }
 
 
     IEnumerator GameFlow()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2.0f);
 
         while (!levelManager.GetPaused()) { 
-            CreateRow(1);
+            CreateRow(index);
             yield return new WaitForSeconds(difficulty);
+            if (difficulty - 1 > 0)
+            {
+                Debug.Log(difficulty);
+               
+                if (difficulty <= 8){
+                    index = 1;
+                    difficulty--;
+                 }
+                else difficulty -= 2;
+            }
         }
     }
 

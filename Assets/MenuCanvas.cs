@@ -10,7 +10,7 @@ public class MenuCanvas : MonoBehaviour {
     private void Start()
     {
         botones.transform.localScale = Vector3.zero;
-        Debug.Log("HOLA HOLA");
+
     }
 
     private void Update()

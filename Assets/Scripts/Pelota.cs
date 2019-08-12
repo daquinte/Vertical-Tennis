@@ -13,7 +13,7 @@ public class Pelota : MonoBehaviour {
             // Calculate Angle Between the collision point 
             Vector3 dir = (Vector3)collision.contacts[0].point - transform.position;
             dir = -dir.normalized;           
-            GetComponent<Rigidbody2D>().AddForce(dir * p.GetVelocity() * Time.deltaTime * 0.2f, ForceMode2D.Force);
+            GetComponent<Rigidbody2D>().AddForce(dir * p.GetVelocity()/4 * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
 
