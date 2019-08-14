@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
 {
 
     public LevelManager levelManager;               //Prefab de levelManager
-
     private LevelManager levelManagerInstance;      //Instancia actual de levelManager
+
+    private int sessionMaxPoints;
 
     private float height;
     private float width;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             RegisterScreenDimensions();
+            sessionMaxPoints = 0;
         }
         else if (instance != this)
             Destroy(gameObject);
@@ -50,6 +52,15 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public int GetSessionMaxPoints()
+    {
+        return sessionMaxPoints;
+    }
+
+    public void SetSessionMaxPoints(int newValue)
+    {
+        sessionMaxPoints = newValue;
+    }
 
     private void OnGameStart()
     {

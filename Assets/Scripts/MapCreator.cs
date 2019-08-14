@@ -15,7 +15,7 @@ public class MapCreator : MonoBehaviour
     public int blocksPerRow = 10;
 
     private LevelManager levelManager;
-    private int difficulty = 15;
+    private int difficulty = 12;
     private int index = 2;
     private float height;
     private float width;
@@ -36,7 +36,7 @@ public class MapCreator : MonoBehaviour
 
         while (!levelManager.GetPaused()) { 
             CreateRow(index);
-            yield return new WaitForSeconds(difficulty);
+            yield return new WaitForSeconds(difficulty+3);
             if (difficulty - 1 > 0)
             {
                 Debug.Log(difficulty);

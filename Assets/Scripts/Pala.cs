@@ -95,6 +95,7 @@ public class Pala : MonoBehaviour
        
      mousePosition = Input.mousePosition;
      mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+     //TODO: mirar si lo podría hacer con un rayo para evitar pulsar sobre la pelota
      GetComponent<Rigidbody2D>().MovePosition(Vector2.Lerp(transform.position, mousePosition, moveSpeed / Time.deltaTime));
         
     }

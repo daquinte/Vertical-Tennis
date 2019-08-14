@@ -30,8 +30,19 @@ public class LevelCanvas : MonoBehaviour {
         panelPausa.SetActive(state);
     }
 
-    public void SetPanelMuerte(bool state)
+    public void SetPanelMuerte(bool state, string tipoMuerte = null)
     {
+        if(tipoMuerte != null)
+        {
+            if(tipoMuerte == "pelota")
+            {
+
+            }
+            else if(tipoMuerte == "bloque")
+            {
+
+            }
+        }
         panelMuerte.SetActive(state);
     }
 
