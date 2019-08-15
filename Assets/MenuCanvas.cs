@@ -19,8 +19,6 @@ public class MenuCanvas : MonoBehaviour {
         {
             float scale = botones.transform.localScale.x + 0.4f * Time.unscaledDeltaTime;
             botones.transform.localScale = new Vector3(scale, scale);
-            Debug.Log(botones.transform.localScale.x);
-
         }
     }
 

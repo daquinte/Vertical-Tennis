@@ -76,12 +76,6 @@ public class LevelCanvas : MonoBehaviour {
         GameManager.instance.GetLevelManager().GoToMenu();
     }
 
-    public void OnQuit()
-    {
-        GameManager.instance.GetLevelManager().QuitGame();
-        Debug.Log("ON QUIT");
-    }
-
     public void StartCountDown(int count, System.Action<LevelCanvas> callback)
     {
         textoCountDown.gameObject.SetActive(true);

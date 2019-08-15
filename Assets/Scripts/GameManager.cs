@@ -7,7 +7,11 @@ public class GameManager : MonoBehaviour
 {
 
     public LevelManager levelManager;               //Prefab de levelManager
+
+    //Clases
     private LevelManager levelManagerInstance;      //Instancia actual de levelManager
+    private Persistencia persistencia;              //Gestor de persistencia
+    private RecordTracker recordTracker;            //Gestor de records
 
     private int sessionMaxPoints;
 
@@ -32,21 +36,26 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    //HACK TEMPORAL :)
     void Start()
     {
-        if(SceneManager.GetActiveScene().name == "EscenaPartida")
+        //HACK TEMPORAL :)
+        if (SceneManager.GetActiveScene().name == "EscenaPartida")
         {
             levelManagerInstance = Instantiate(levelManager);
         }
+        //
+
+        persistencia = GetComponent<Persistencia>();
+        recordTracker = GetComponent<RecordTracker>();
     }
 
+    /// Empieza una partida.
     public void StartGame()
     {
         OnGameStart();
         levelManagerInstance = null;
     }
-
+    //Termina el juego
     public void QuitGame()
     {
         Application.Quit();
@@ -57,11 +66,24 @@ public class GameManager : MonoBehaviour
         return sessionMaxPoints;
     }
 
+
     public void SetSessionMaxPoints(int newValue)
     {
         sessionMaxPoints = newValue;
+        VerificaRecord(sessionMaxPoints);
     }
 
+    /// <summary>
+    /// Comprueba si el parámetro es de valor suficiente para ser considerado un record.
+    /// Si lo es, pedirá un nombre al usuario. Si no, se ignora
+    /// </summary>
+    /// <param name="posibleRecord"></param>
+    private void VerificaRecord(int posibleRecord)
+    {
+        bool a = recordTracker.CompruebaRecord(posibleRecord);
+    }
+
+    //Load de la escena de juego y registra callback al método OnSceneLoaded
     private void OnGameStart()
     {
         SceneManager.LoadScene(1);

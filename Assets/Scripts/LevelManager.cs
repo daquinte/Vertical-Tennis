@@ -123,16 +123,11 @@ public class LevelManager : MonoBehaviour
         levelCanvas.SetPauseButton(true);
     }
 
+    //TODO: No está bien hecho, debería ser GameManager el encargado de cambiar de escena y borrar su instancia
     public void GoToMenu()
     {
         Destroy(this.gameObject);
         SceneManager.LoadScene(0);
     }
 
-    public void QuitGame()
-    {
-        //Te lleva al menú -> avisa a GM de que tiene que pasarse al menú, guarda informacion y espera a ser destruido por GM
-        GameManager.instance.SetSessionMaxPoints(puntosMax);
-        GameManager.instance.QuitGame();
-    }
 }
